@@ -1,5 +1,4 @@
-/* Подключаем шрифты через Google Fonts (или используй Next.js Font в layout) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap');
+@import 'modern-normalize/modern-normalize.css';
 
 :root {
   /* Colors */
@@ -57,7 +56,6 @@ button {
   font-family: inherit;
   border: none;
   background: none;
-  /* Критическое требование ТЗ: cursor: pointer */
   cursor: pointer;
   transition:
     background-color var(--transition),
@@ -74,7 +72,7 @@ select {
 /* Common utility classes */
 .container {
   width: 100%;
-  max-width: 1184px; /* Стандарт для десктопа GoIT */
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 16px;
 }

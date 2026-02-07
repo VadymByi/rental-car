@@ -1,27 +1,31 @@
 import { Metadata } from 'next';
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import CatalogClient from './CatalogClient';
+import { getCars } from '@/api/cars-service';
 
 export const metadata: Metadata = {
   title: 'Catalog | RentalCar',
-  description:
-    'Explore our wide range of cars available for rent. Filter by brand, price, and mileage.',
-  openGraph: {
-    title: 'Catalog | RentalCar',
-    description: 'Choose your car from our extensive catalog.',
-    url: 'https://your-deployment-url.vercel.app/catalog',
-    siteName: 'RentalCar',
-    images: [
-      {
-        url: 'https://ac.goit.global/fullstack/react/og-meta.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Car Catalog',
-      },
-    ],
-    type: 'website',
-  },
+  description: 'Explore our wide range of cars available for rent.',
 };
 
-export default function CatalogPage() {
-  return <CatalogClient />;
+export default async function CatalogPage() {
+  const queryClient = new QueryClient();
+
+  const initialFilters = {
+    brand: '',
+    rentalPrice: '',
+    minMileage: 0,
+    maxMileage: 0,
+  };
+
+  await queryClient.prefetchQuery({
+    queryKey: ['cars', 1, initialFilters],
+    queryFn: () => getCars(1, initialFilters),
+  });
+
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <CatalogClient />
+    </HydrationBoundary>
+  );
 }

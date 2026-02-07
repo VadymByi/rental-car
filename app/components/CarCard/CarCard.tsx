@@ -9,6 +9,7 @@ import Link from 'next/link';
 interface CarCardProps {
   car: Car;
 }
+
 export default function CarCard({ car }: CarCardProps) {
   const { favouritesCars, toggleFavorite } = useCarStore();
 
@@ -17,7 +18,6 @@ export default function CarCard({ car }: CarCardProps) {
   const country = adressParts[adressParts.length - 1];
 
   const formattedMileage = car.mileage.toLocaleString('ru-RU');
-
   const isFavorite = favouritesCars.includes(car.id);
 
   return (
@@ -29,7 +29,7 @@ export default function CarCard({ car }: CarCardProps) {
           width={276}
           height={268}
           className={css.image}
-          style={{ objectFit: 'cover' }} // вместо height: auto
+          style={{ objectFit: 'cover' }}
           loading="eager"
         />
         <button type="button" className={css.heartBtn} onClick={() => toggleFavorite(car.id)}>
@@ -41,7 +41,7 @@ export default function CarCard({ car }: CarCardProps) {
 
       <div className={css.title}>
         <h2 className={css.brandModelYear}>
-          {car.brand} <span>{car.model}</span>, {car.year}
+          {car.brand} <span className={css.accentModel}>{car.model}</span>, {car.year}
         </h2>
         <p className={css.price}>${car.rentalPrice}</p>
       </div>

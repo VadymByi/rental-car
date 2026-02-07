@@ -6,9 +6,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
-
   list-style: none;
-  /* padding: 0; */
   margin: 43px 0 93px 0;
 }
 

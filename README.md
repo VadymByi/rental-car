@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RentalCar - Car Rental Service
 
-## Getting Started
+A modern web application for car rental, built with **Next.js**, **TypeScript**, and **Zustand**.
+This project allows users to browse a car catalog, filter results by various criteria, manage a list
+of favorites, and book cars through an interactive form.
 
-First, run the development server:
+## 🚀 Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **State Management:** [Zustand](https://zustand-demo.pmnd.rs/) (with Persist middleware)
+- **Data Fetching:** [TanStack Query v5](https://tanstack.com/query/latest) &
+  [Axios](https://axios-http.com/)
+- **Styling:** CSS Modules
+- **Form & UI Components:** Native Form Actions & [Headless UI](https://headlessui.com/)
+- **Notifications:** [React Hot Toast](https://react-hot-toast.com/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Dynamic Catalog:** Fetches car data from a remote API with server-side pagination.
+- **Advanced Filtering:** Filter cars by brand, rental price, and mileage (handled on the backend).
+- **Favorites System:** Add cars to favorites. The list is persisted in `localStorage`.
+- **Car Details Page:** Detailed view for each vehicle with unique specifications.
+- **Booking Form:** Functional form to rent a car with a custom date picker and success
+  notifications.
+- **SEO Optimized:** Meta tags and Open Graph support for all pages.
+- **Responsive Design:** Optimized for desktop viewing according to the provided layout.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Installation & Setup
 
-## Learn More
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/VadymByi/rental-car](https://github.com/VadymByi/rental-car)
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+4.  **Open the app:** Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `app/` - Application routes and pages.
+- `api/` - Axios instance and API service methods.
+- `store/` - Zustand global state management.
+- `components/` - Reusable UI components.
+- `public/` - Static assets like SVG sprites and images.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 👤 Author
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Vadym Buinov** — [GitHub](https://github.com/VadymByi)

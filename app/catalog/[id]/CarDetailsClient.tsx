@@ -4,9 +4,10 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
 import { getCarById } from '@/api/cars-service';
 import Image from 'next/image';
-import toast from 'react-hot-toast'; // Импортируем тосты сюда
+import toast from 'react-hot-toast';
 import css from './CarDetails.module.css';
 import BookingForm, { BookingData } from '@/app/components/BookingForm/BookingForm';
+import Loader from '@/app/components/Loader/Loader';
 
 export default function CarDetailsPage() {
   const { id } = useParams();
@@ -21,24 +22,14 @@ export default function CarDetailsPage() {
     enabled: !!id,
   });
 
-  // Обработчик, который мы передаем в форму
   const handleBookingSubmit = (data: BookingData) => {
-    // Здесь выполняем проверку или отправку на API
-    // if (!data.date) {
-    //   toast.error('Please select a booking date');
-    //   return;
-    // }
-
-    // Имитация успешной отправки
-    console.log('Final booking data:', data);
-
     toast.success(`Success! Car booked for ${data.name}. We will contact you at ${data.email}.`, {
       duration: 5000,
       position: 'top-center',
     });
   };
 
-  if (isLoading) return <div className={css.loader}>Loading car details...</div>;
+  if (isLoading) return <Loader />;
   if (isError || !car) return <div className={css.error}>Car not found.</div>;
 
   const formattedMileage = car.mileage
@@ -65,7 +56,6 @@ export default function CarDetailsPage() {
           />
         </div>
 
-        {/* Передаем наш обработчик в пропс onSubmit */}
         <div className={css.bookingFormWrapper}>
           <BookingForm onSubmit={handleBookingSubmit} />
         </div>

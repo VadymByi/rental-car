@@ -15,7 +15,7 @@ export default function Header() {
     };
 
     window.addEventListener('scroll', onScroll);
-    onScroll(); // на случай, если страница открыта не сверху
+    onScroll();
 
     return () => window.removeEventListener('scroll', onScroll);
   }, []);

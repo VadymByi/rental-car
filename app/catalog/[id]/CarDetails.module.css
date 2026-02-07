@@ -125,11 +125,3 @@
   flex-shrink: 0;
   fill: var(--main);
 }
-
-/* .loader,
-.error {
-  padding: 64px 16px;
-  text-align: center;
-  font-size: 16px;
-  color: var(--gray);
-} */
