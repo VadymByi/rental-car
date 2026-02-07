@@ -1,0 +1,49 @@
+.catalog {
+  padding: 84px 120px 124px 120px;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+
+  list-style: none;
+  /* padding: 0; */
+  margin: 43px 0 93px 0;
+}
+
+.item {
+  display: flex;
+}
+
+.loadMoreWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.loadMoreButton {
+  padding: 12px 38px;
+
+  background-color: transparent;
+  color: var(--main);
+
+  border: 1px solid var(--button);
+  border-radius: 12px;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+
+  cursor: pointer;
+  transition:
+    border var(--transition),
+    transform var(--transition);
+}
+
+.loadMoreButton:hover:not(:disabled) {
+  border: 1px solid var(--button-hover);
+}
+
+.loadMoreButton:active:not(:disabled) {
+  transform: scale(0.98);
+}

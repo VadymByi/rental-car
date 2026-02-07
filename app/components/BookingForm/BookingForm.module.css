@@ -1,0 +1,138 @@
+.formContainer {
+  padding: 32px;
+  background-color: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--gray);
+}
+
+.formTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: var(--main);
+}
+
+.formSubtitle {
+  margin-bottom: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.inputGroup {
+  width: 100%;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 14px 20px;
+  background-color: var(--inputs);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  outline: none;
+  transition: all var(--transition);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--gray);
+}
+
+.input:hover,
+.textarea:hover {
+  border-color: var(--gray-light);
+}
+
+.input:focus,
+.textarea:focus {
+  background-color: var(--white);
+  border-color: var(--button);
+  box-shadow: 0 0 0 1px var(--button);
+}
+
+.input:focus::placeholder,
+.textarea:focus::placeholder {
+  opacity: 0.5;
+}
+
+.textarea {
+  min-height: 114px;
+  resize: none;
+}
+
+.submitBtn {
+  display: block;
+  max-width: 156px;
+  width: 100%;
+  padding: 16px 40px;
+  margin: 10px auto 0;
+  background-color: var(--button);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.submitBtn:hover {
+  background-color: var(--button-hover);
+}
+
+.inputGroup :global(.react-datepicker-wrapper) {
+  display: block;
+  width: 100%;
+}
+
+.inputGroup :global(.react-datepicker__input-container) {
+  display: block;
+  width: 100%;
+}
+
+.datepickerWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.datepickerWrapper :global(.react-datepicker-wrapper) {
+  width: 100%;
+}
+
+.clearDateBtn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray);
+  transition: color var(--transition);
+  z-index: 1;
+}
+
+.clearDateBtn:hover {
+  color: var(--button);
+}
+
+.clearIcon {
+  font-size: 30px;
+  line-height: 1;
+}
+
+.datepickerWrapper .input {
+  padding-right: 35px;
+}

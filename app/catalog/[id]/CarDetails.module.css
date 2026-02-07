@@ -1,0 +1,135 @@
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 84px 120px 104px 120px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 640px 1fr;
+  grid-template-areas:
+    'image info'
+    'booking info';
+  column-gap: 72px;
+  row-gap: 40px;
+}
+
+.imageSide {
+  grid-area: image;
+}
+
+.mainImage {
+  width: 100%;
+  height: auto;
+  border-radius: 19px;
+  object-fit: cover;
+}
+
+.bookingFormWrapper {
+  grid-area: booking;
+}
+
+.infoSide {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--main);
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+  color: var(--main);
+  white-space: nowrap;
+  margin: 20px 0 8px;
+}
+
+.carId {
+  color: var(--gray);
+  white-space: nowrap;
+}
+
+.locationMileage {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.locationWrapper {
+  display: flex;
+  gap: 4px;
+}
+.secondaryText {
+  margin-bottom: 16px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--button);
+  margin-bottom: 32px;
+}
+
+.description {
+  margin-bottom: 68px;
+}
+
+.peculiarities {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--main);
+}
+
+.conditionList,
+.specList,
+.accList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.conditionItem,
+.specItem,
+.accItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  flex-shrink: 0;
+  fill: var(--main);
+}
+
+/* .loader,
+.error {
+  padding: 64px 16px;
+  text-align: center;
+  font-size: 16px;
+  color: var(--gray);
+} */

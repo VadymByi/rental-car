@@ -1,0 +1,59 @@
+.hero {
+  min-height: calc(100vh - 68px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 60px;
+  background: url('/hero-bg.webp') center 25% / cover no-repeat;
+  color: var(--white);
+  text-align: center;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--button);
+  color: var(--white);
+  padding: 12px 88px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  text-decoration: none;
+  transition:
+    background-color var(--transition),
+    transform var(--transition);
+}
+
+.button:hover {
+  background-color: var(--button-hover);
+}
+
+.button:active {
+  transform: scale(0.98);
+}

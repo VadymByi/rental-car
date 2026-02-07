@@ -1,0 +1,121 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 268px;
+  aspect-ratio: 276 / 268;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.heartBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.heart {
+  width: 16px;
+  height: 16px;
+  fill: transparent;
+  stroke: var(--white);
+  transition: var(--transition);
+}
+
+.heartBtn:hover .heart {
+  transform: scale(1.1);
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.brandModelYear {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--main);
+}
+
+.brandModelYear span {
+  color: var(--button);
+}
+
+.price {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--main);
+}
+
+.desc {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+
+.cityCountryRentalCompany,
+.typeMileage {
+  display: flex;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--gray);
+}
+
+.cityCountryRentalCompany span,
+.typeMileage span {
+  white-space: nowrap;
+}
+
+.cityCountryRentalCompany span + span::before,
+.typeMileage span + span::before {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 16px;
+  background-color: var(--gray-light);
+  margin: 0 8px;
+  vertical-align: middle;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 12px 0;
+  background-color: var(--button);
+  color: var(--white);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.43;
+  transition: background-color var(--transition);
+  margin-top: auto;
+}
+
+.button:hover {
+  background-color: var(--button-hover);
+}

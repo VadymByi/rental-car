@@ -1,0 +1,83 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: var(--badges);
+  border-bottom: 1px solid var(--badges);
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 8px;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.08);
+  transition: opacity 0.2s ease;
+}
+
+.header.scrolled::after {
+  opacity: 1;
+}
+.container {
+  padding: 0 120px;
+  margin: 0 auto;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.link {
+  position: relative;
+  padding: 24px 0;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--main);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 0;
+  height: 2px;
+  background-color: var(--button);
+  transition: width var(--transition);
+}
+
+.link:hover {
+  color: var(--button);
+}
+
+.link:not(.active):hover::after {
+  width: 100%;
+}
+
+.active {
+  color: var(--button);
+}
+
+.active::after {
+  display: none;
+}
