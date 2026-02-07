@@ -5,7 +5,8 @@
 .list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+  column-gap: 32px;
+  row-gap: 48px;
   list-style: none;
   margin: 43px 0 93px 0;
 }
@@ -43,5 +44,24 @@
 }
 
 .loadMoreButton:active:not(:disabled) {
-  transform: scale(0.98);
+  transform: scale(0.95);
+}
+
+.loadMoreButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.notFound {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 18px;
+  color: var(--gray);
+  margin-top: 50px;
+}
+
+.error {
+  text-align: center;
+  color: #f44336;
+  margin-top: 50px;
 }

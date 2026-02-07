@@ -26,13 +26,18 @@ export default function CarCard({ car }: CarCardProps) {
         <Image
           src={car.img}
           alt={`${car.brand} ${car.model}`}
-          width={276}
-          height={268}
+          fill
+          sizes="(max-width: 768px) 100vw, 276px"
           className={css.image}
-          style={{ objectFit: 'cover' }}
           loading="eager"
+          priority
         />
-        <button type="button" className={css.heartBtn} onClick={() => toggleFavorite(car.id)}>
+        <button
+          type="button"
+          className={css.heartBtn}
+          onClick={() => toggleFavorite(car.id)}
+          aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+        >
           <svg className={css.heart}>
             <use href={isFavorite ? '/sprite.svg#icon-heart-active' : '/sprite.svg#icon-heart'} />
           </svg>

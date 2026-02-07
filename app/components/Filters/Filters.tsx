@@ -12,6 +12,8 @@ export default function Filters() {
 
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedPrice, setSelectedPrice] = useState('');
+  const [minMileage, setMinMileage] = useState('');
+  const [maxMileage, setMaxMileage] = useState('');
 
   const { data: brands } = useQuery({
     queryKey: ['brands'],
@@ -20,19 +22,37 @@ export default function Filters() {
 
   const prices = Array.from({ length: 13 }, (_, i) => ((i + 3) * 10).toString());
 
+  const formatDisplayValue = (value: string) => {
+    const digits = value.replace(/\D/g, '');
+    return digits.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+
+  const handleMileageChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    setter: (val: string) => void
+  ) => {
+    setter(formatDisplayValue(e.target.value));
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+
+    const cleanNumber = (val: string) => {
+      const digits = val.replace(/,/g, '');
+      return digits ? Number(digits) : undefined;
+    };
 
     setFilters({
       brand: selectedBrand || undefined,
       price: selectedPrice || undefined,
-      minMileage: formData.get('minMileage') ? Number(formData.get('minMileage')) : undefined,
-      maxMileage: formData.get('maxMileage') ? Number(formData.get('maxMileage')) : undefined,
+      minMileage: cleanNumber(minMileage),
+      maxMileage: cleanNumber(maxMileage),
     });
 
     setSelectedBrand('');
     setSelectedPrice('');
+    setMinMileage('');
+    setMaxMileage('');
     e.currentTarget.reset();
   };
 
@@ -71,7 +91,7 @@ export default function Filters() {
             {({ open }) => (
               <div className={css.selectWrapper}>
                 <Listbox.Button className={css.select}>
-                  {selectedPrice ? `To ${selectedPrice}$` : 'Choose a price'}
+                  <span>{selectedPrice ? `To ${selectedPrice}$` : 'Choose a price'}</span>
                   <svg className={`${css.iconChevron} ${open ? css.rotate : ''}`}>
                     <use href="/sprite.svg#icon-chevron-down" />
                   </svg>
@@ -94,8 +114,28 @@ export default function Filters() {
         <div className={css.fieldGroup}>
           <label className={css.label}>Car mileage / km</label>
           <div className={css.mileageInputs}>
-            <input name="minMileage" type="number" placeholder="From" className={css.inputLeft} />
-            <input name="maxMileage" type="number" placeholder="To" className={css.inputRight} />
+            <div className={css.inputWrapper}>
+              <span className={css.inputLabel}>From</span>
+              <input
+                type="text"
+                name="minMileage"
+                value={minMileage}
+                onChange={e => handleMileageChange(e, setMinMileage)}
+                className={css.inputLeft}
+                autoComplete="off"
+              />
+            </div>
+            <div className={css.inputWrapper}>
+              <span className={css.inputLabel}>To</span>
+              <input
+                type="text"
+                name="maxMileage"
+                value={maxMileage}
+                onChange={e => handleMileageChange(e, setMaxMileage)}
+                className={css.inputRight}
+                autoComplete="off"
+              />
+            </div>
           </div>
         </div>
 

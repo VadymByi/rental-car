@@ -40,7 +40,9 @@ of favorites, and book cars through an interactive form.
     ```bash
     npm run dev
     ```
-4.  **Open the app:** Visit [http://localhost:3000](http://localhost:3000) in your browser.
+4.  **Open the app:** Visit
+    [https://rental-car-psi-ten.vercel.app/](https://rental-car-psi-ten.vercel.app/) in your
+    browser.
 
 ## 📁 Project Structure
 

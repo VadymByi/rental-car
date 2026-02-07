@@ -6,6 +6,22 @@ export const metadata: Metadata = {
   title: 'Home | RentalCar',
   description:
     'The best car rental service in Ukraine. Choose your car and start your journey today.',
+  openGraph: {
+    title: 'Home | RentalCar',
+    description:
+      'The best car rental service in Ukraine. Choose your car and start your journey today.',
+    url: 'https://rental-car-psi-ten.vercel.app/',
+    siteName: 'RentalCar',
+    images: [
+      {
+        url: 'https://ac.goit.global/fullstack/react/og-meta.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'RentalCar Service',
+      },
+    ],
+    type: 'website',
+  },
 };
 export default function HomePage() {
   return (

@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `Car Details | RentalCar`,
       description: `View car specifications and book car #${id} online.`,
-      url: `https://your-deployment-url.vercel.app/catalog/${id}`,
+      url: `https://rental-car-psi-ten.vercel.app/catalog/${id}`,
       siteName: 'RentalCar',
       images: [
         {

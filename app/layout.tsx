@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'RentalCar | Premium Car Rental',
     description: 'Find the perfect car for your journey. Reliable service and best prices.',
-    url: 'https://your-deployment-url.vercel.app',
+    url: 'https://rental-car-psi-ten.vercel.app/',
     siteName: 'RentalCar',
     images: [
       {
