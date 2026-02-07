@@ -2,6 +2,8 @@
 
 import { Listbox } from '@headlessui/react';
 import { useQuery } from '@tanstack/react-query';
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
 import { getBrands } from '@/api/cars-service';
 import { useCarStore } from '@/store/useCarStore';
 import { useState } from 'react';
@@ -43,8 +45,8 @@ export default function Filters() {
     };
 
     setFilters({
-      brand: selectedBrand || undefined,
-      price: selectedPrice || undefined,
+      brand: selectedBrand === 'All brands' || !selectedBrand ? undefined : selectedBrand,
+      price: selectedPrice === 'All prices' || !selectedPrice ? undefined : selectedPrice,
       minMileage: cleanNumber(minMileage),
       maxMileage: cleanNumber(maxMileage),
     });
@@ -53,6 +55,7 @@ export default function Filters() {
     setSelectedPrice('');
     setMinMileage('');
     setMaxMileage('');
+
     e.currentTarget.reset();
   };
 
@@ -71,14 +74,16 @@ export default function Filters() {
                   </svg>
                 </Listbox.Button>
                 <Listbox.Options className={css.options}>
-                  <Listbox.Option value="" className={css.option}>
-                    All brands
-                  </Listbox.Option>
-                  {brands?.map(brand => (
-                    <Listbox.Option key={brand} value={brand} className={css.option}>
-                      {brand}
+                  <SimpleBar className={css.scrollArea}>
+                    <Listbox.Option value="All brands" className={css.option}>
+                      All brands
                     </Listbox.Option>
-                  ))}
+                    {brands?.map(brand => (
+                      <Listbox.Option key={brand} value={brand} className={css.option}>
+                        {brand}
+                      </Listbox.Option>
+                    ))}
+                  </SimpleBar>
                 </Listbox.Options>
               </div>
             )}
@@ -86,25 +91,33 @@ export default function Filters() {
         </div>
 
         <div className={css.fieldGroup}>
-          <label className={css.label}>Price/ 1 hour</label>
+          <label className={css.label}>Price / 1 hour</label>
           <Listbox value={selectedPrice} onChange={setSelectedPrice}>
             {({ open }) => (
               <div className={css.selectWrapper}>
                 <Listbox.Button className={css.select}>
-                  <span>{selectedPrice ? `To ${selectedPrice}$` : 'Choose a price'}</span>
+                  <span>
+                    {selectedPrice === 'All prices'
+                      ? 'All prices'
+                      : selectedPrice
+                        ? `To ${selectedPrice}$`
+                        : 'Choose a price'}
+                  </span>
                   <svg className={`${css.iconChevron} ${open ? css.rotate : ''}`}>
                     <use href="/sprite.svg#icon-chevron-down" />
                   </svg>
                 </Listbox.Button>
                 <Listbox.Options className={css.options}>
-                  <Listbox.Option value="" className={css.option}>
-                    All prices
-                  </Listbox.Option>
-                  {prices.map(price => (
-                    <Listbox.Option key={price} value={price} className={css.option}>
-                      {price}
+                  <SimpleBar className={css.scrollArea}>
+                    <Listbox.Option value="All prices" className={css.option}>
+                      All prices
                     </Listbox.Option>
-                  ))}
+                    {prices.map(price => (
+                      <Listbox.Option key={price} value={price} className={css.option}>
+                        {price}
+                      </Listbox.Option>
+                    ))}
+                  </SimpleBar>
                 </Listbox.Options>
               </div>
             )}
@@ -118,7 +131,6 @@ export default function Filters() {
               <span className={css.inputLabel}>From</span>
               <input
                 type="text"
-                name="minMileage"
                 value={minMileage}
                 onChange={e => handleMileageChange(e, setMinMileage)}
                 className={css.inputLeft}
@@ -129,7 +141,6 @@ export default function Filters() {
               <span className={css.inputLabel}>To</span>
               <input
                 type="text"
-                name="maxMileage"
                 value={maxMileage}
                 onChange={e => handleMileageChange(e, setMaxMileage)}
                 className={css.inputRight}

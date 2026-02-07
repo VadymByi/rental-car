@@ -22,7 +22,6 @@
 
 .selectWrapper {
   position: relative;
-  width: 100%;
 }
 
 .select {
@@ -38,6 +37,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  outline: none;
+}
+
+.select:focus,
+.select:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
 
 .fieldGroup:nth-child(1) .select {
@@ -52,7 +58,6 @@
   width: 16px;
   height: 16px;
   transform: scale(0.8);
-  stroke: var(--main);
   fill: var(--main);
   transition: var(--transition);
 }
@@ -66,20 +71,29 @@
   top: calc(100% + 4px);
   left: 0;
   width: 100%;
-  max-height: 272px;
   background-color: var(--white);
   border: 1px solid var(--inputs);
-  box-shadow: 0 4px 36px 0 rgba(0, 0, 0, 0.02);
   border-radius: 12px;
-  padding: 14px 26px 14px 18px;
-  overflow-y: auto;
+  padding: 8px 0;
   z-index: 11;
-  scrollbar-width: thin;
-  scrollbar-color: var(--gray-light) transparent;
+  outline: none;
 }
 
+.options:focus,
+.options:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.scrollArea {
+  max-height: 272px;
+}
+
+.fieldGroup:nth-child(2) .scrollArea {
+  max-height: 188px;
+}
 .option {
-  padding: 4px 0;
+  padding: 4px 18px;
   font-size: 16px;
   font-weight: 500;
   color: var(--gray);
@@ -110,6 +124,7 @@
 .inputWrapper:last-child {
   border-radius: 0 12px 12px 0;
 }
+
 .inputLabel {
   position: absolute;
   left: 24px;
@@ -131,21 +146,20 @@
   font-weight: 500;
 }
 
+.inputLeft:focus,
+.inputRight:focus,
+.inputLeft:focus-visible,
+.inputRight:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 .inputRight {
   padding-left: 50px;
 }
 
-.inputLeft::-webkit-outer-spin-button,
-.inputLeft::-webkit-inner-spin-button,
-.inputRight::-webkit-outer-spin-button,
-.inputRight::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 .searchBtn {
   font-size: 16px;
-  line-height: 1.25;
   font-weight: 600;
   padding: 12px 51px;
   background-color: var(--button);
@@ -155,27 +169,34 @@
   cursor: pointer;
 }
 
-.select:focus,
-.options:focus {
-  outline: none;
+.searchBtn:hover {
+  background-color: var(--button-hover);
 }
 
-.options::-webkit-scrollbar {
-  width: 8px;
+.searchBtn:active {
+  transform: scale(0.98);
 }
 
-.options::-webkit-scrollbar-track {
-  background: transparent;
-  margin: 12px 0;
+:global(.simplebar-track.simplebar-vertical) {
+  width: 12px;
+  right: 6px;
 }
 
-.options::-webkit-scrollbar-thumb {
-  background: var(--gray-light);
+:global(.simplebar-scrollbar::before) {
+  background-color: var(--gray-light);
   border-radius: 10px;
 }
 
-.options::-webkit-scrollbar-button {
+:global(.simplebar-track.simplebar-horizontal) {
   display: none;
-  width: 0;
-  height: 0;
+}
+
+.fieldGroup:nth-child(1) :global(.simplebar-scrollbar::before) {
+  min-height: 128px;
+  max-height: 128px;
+}
+
+.fieldGroup:nth-child(2) :global(.simplebar-scrollbar::before) {
+  min-height: 64px;
+  max-height: 64px;
 }
